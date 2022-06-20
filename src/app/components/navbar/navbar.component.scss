@@ -1,0 +1,15 @@
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  padding: 10px 0;
+  background-color: #202733;
+  color: white;
+  border-bottom: solid 3px white;
+  h1 {
+    margin: 0;
+    padding-left: 10px;
+  }
+}

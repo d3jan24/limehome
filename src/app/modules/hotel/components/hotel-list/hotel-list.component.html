@@ -1,3 +1,5 @@
-<div *ngFor="let hotel of hotels$ | async">
-  <lh-hotel-card [hotel]="hotel"></lh-hotel-card>
+<div class="container">
+  <div class="hotel-container">
+    <lh-hotel-card *ngFor="let hotel of hotels$ | async" [hotel]="hotel"></lh-hotel-card>
+  </div>
 </div>

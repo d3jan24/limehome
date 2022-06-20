@@ -1,0 +1,17 @@
+.hotel-card {
+  border: solid 2px #202733;
+  color: white;
+  background-color: lightgray;
+  border-radius: 4px;
+  max-width: 300px;
+  width: 300px;
+  padding: 3px;
+  margin-left: 4px;
+  height: 100%;
+  h4 {
+    color: #202733;
+  }
+  span {
+    white-space: pre-wrap;
+  }
+}

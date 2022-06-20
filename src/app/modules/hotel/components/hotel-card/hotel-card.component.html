@@ -1,4 +1,6 @@
-<article [id]="cardId">
+<article class="hotel-card" [id]="cardId">
   <h4>{{ hotel.title }}</h4>
-  <p>{{ hotel.address.label }}</p>
+  <div>
+    <span class="address">{{ hotel.address.label }}</span>
+  </div>
 </article>
