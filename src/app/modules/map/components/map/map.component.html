@@ -6,6 +6,11 @@
   [center]="[-74.5, 40]"
   [bounds]="bounds">
   <ng-container *ngFor="let marker of markers$ | async">
-    <mgl-marker [lngLat]="marker"></mgl-marker>
+    <mgl-marker [lngLat]="marker.lngLat">
+      <div
+        (click)="onMarkerClick(marker)"
+        class="pin"
+      ></div>
+    </mgl-marker>
   </ng-container>
 </mgl-map>
