@@ -8,4 +8,8 @@ import { IHotel } from '../../models/hotel';
 })
 export class HotelCardComponent {
   @Input() hotel: IHotel;
+
+  get cardId(): string {
+    return `hotel${this.hotel.distance.toString()}`;
+  }
 }

@@ -1,0 +1,15 @@
+<mgl-map
+  class="map"
+  [zoom]="[9]"
+  [style]="'mapbox://styles/mapbox/navigation-day-v1'"
+  [fitBounds]="bounds"
+  [center]="center">
+  <ng-container *ngFor="let marker of markers$ | async">
+    <mgl-marker [lngLat]="marker.lngLat">
+      <div
+        (click)="onMarkerClick(marker)"
+        class="pin"
+      ></div>
+    </mgl-marker>
+  </ng-container>
+</mgl-map>

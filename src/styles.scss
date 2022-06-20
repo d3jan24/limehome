@@ -37,3 +37,6 @@ body {
 .text-red {
   color: red;
 }
+
+@import '~mapbox-gl/dist/mapbox-gl.css';
+@import '~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
