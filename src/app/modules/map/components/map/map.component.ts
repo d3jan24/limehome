@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { LngLatBoundsLike, LngLatLike, Map } from 'mapbox-gl';
+import { Component } from '@angular/core';
+import { LngLatBoundsLike, LngLatLike } from 'mapbox-gl';
 import { Observable } from 'rxjs';
+import { GERMANY_BOUNDS } from 'src/app/constants/coordinates.constants';
 import { MapService } from '../../services/map.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { MapService } from '../../services/map.service';
 })
 export class MapComponent {
   markers$: Observable<LngLatLike[]> = this.mapService.markers$;
-  bounds: LngLatBoundsLike = this.mapService.bounds;
+  bounds: LngLatBoundsLike = GERMANY_BOUNDS;
 
   constructor(
     private mapService: MapService

@@ -7,10 +7,7 @@ import { IHotel } from "../../hotel/models/hotel";
   providedIn: 'root'
 })
 export class MapService {
-  private readonly sw = new LngLat(5.98865807458, 47.3024876979);
-  private readonly ne = new LngLat(15.0169958839, 54.983104153);
-  readonly bounds = new LngLatBounds(this.sw, this.ne);
-  markers$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]); 
+  markers$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
   mapMarkers(hotels: IHotel[]): void {
     const markers = hotels.map(
