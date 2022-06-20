@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   appId: 'bVt06ID4hVBUZ6cy74uc',
-  apiKey: 'JGUDtwriwkbFxfRNwWSTFaWMgA_2FPYBgymUz-tVjSk'
+  apiKey: 'JGUDtwriwkbFxfRNwWSTFaWMgA_2FPYBgymUz-tVjSk',
+  apiUrl: 'http://localhost:3001'
 };
 
 /*
