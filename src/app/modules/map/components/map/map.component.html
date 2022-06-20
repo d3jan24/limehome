@@ -1,0 +1,11 @@
+<mgl-map
+  #map
+  class="map"
+  [style]="'mapbox://styles/mapbox/streets-v9'"
+  [zoom]="[11]"
+  [center]="[-74.5, 40]"
+  [bounds]="bounds">
+  <ng-container *ngFor="let marker of markers$ | async">
+    <mgl-marker [lngLat]="marker"></mgl-marker>
+  </ng-container>
+</mgl-map>

@@ -1,7 +1,7 @@
 export interface IHotel {
     title: string;
     address: IAddress;
-    possition: IPosition;
+    position: IPosition;
     distance: number;
   }
   
