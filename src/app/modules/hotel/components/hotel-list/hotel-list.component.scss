@@ -1,16 +1,16 @@
 .hotel-container {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  background-color: #202733;
+  grid-column: center-start / -1;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 20px;
+  overflow: auto;
+  padding-bottom: 1rem;
   padding: 8px;
   margin: 0 5px;
   border-radius: 4px;
-  left: 0;
   z-index: 99;
   position: relative;
   width: 100%;
-  display: flex;
 }
 
 .container {

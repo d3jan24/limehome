@@ -1,15 +1,21 @@
 .hotel-card {
-  border: solid 2px #202733;
-  color: white;
-  background-color: lightgray;
-  border-radius: 4px;
+  display: grid;
+  place-content: center;
+  background-color: white;
+  color: black;
+  font-size: 1rem;
+  min-width: 13rem;
   max-width: 300px;
-  width: 300px;
-  padding: 3px;
   margin-left: 4px;
+  padding-left: 5px;
   height: 100%;
+  box-shadow: -2px 3px 10px 7px rgba(0,0,0,0.24);
+  &.current-hotel {
+    background-color: #d2d5d9;
+    border: solid 1px black;
+  }
   h4 {
-    color: #202733;
+    margin-top: 0;
   }
   span {
     white-space: pre-wrap;

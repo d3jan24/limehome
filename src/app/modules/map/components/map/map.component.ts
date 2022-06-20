@@ -19,11 +19,14 @@ export class MapComponent {
   ) { }
 
   onMarkerClick(marker: IMarker): void {
-    document.querySelector(`#hotel${marker.id}`)?.scrollIntoView(
-      {
-        behavior: 'smooth'
-      }
-    );
+    const allHotels = document.querySelectorAll('.current-hotel');
+    allHotels.forEach((hotel: Element) => hotel.classList.remove('current-hotel'));
+    console.log(allHotels);
+    const selected = document.querySelector(`#hotel${marker.id}`);
+    selected?.scrollIntoView({
+      behavior: 'smooth'
+    });
+    selected?.classList.add('current-hotel');
   }
 
 }

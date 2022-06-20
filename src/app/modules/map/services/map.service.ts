@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { LngLat, LngLatBounds, LngLatLike } from "mapbox-gl";
+import { LngLatLike } from "mapbox-gl";
 import { BehaviorSubject } from "rxjs";
 import { IHotel } from "../../hotel/models/hotel";
 import { IMarker } from "../models/map";
