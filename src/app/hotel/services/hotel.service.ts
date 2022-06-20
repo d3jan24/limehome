@@ -23,7 +23,7 @@ export class HotelService implements OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((hotels: IHotel[]) => {
         this.hotels$.next(hotels);
-      })
+      });
   }
   
 }
