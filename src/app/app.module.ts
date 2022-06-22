@@ -1,6 +1,5 @@
 // core modules
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 // routing
@@ -14,13 +13,14 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MapModule } from './modules/map/map.module';
 import { HotelModule } from './modules/hotel/hotel.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     LayoutComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +29,9 @@ import { HotelModule } from './modules/hotel/hotel.module';
     FormsModule,
     ReactiveFormsModule,
     HotelModule,
-    MapModule
+    MapModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
