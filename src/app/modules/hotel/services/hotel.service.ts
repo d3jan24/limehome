@@ -3,7 +3,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { IMarker } from 'src/app/modules/map/model/map';
 import { MapService } from '../../map/services/map.service';
-import { IHotel } from '../models/hotel';
+import { IHotel, IPosition } from '../models/hotel';
 import { HotelApiService } from './http/hotel-api.service';
 
 @Injectable({

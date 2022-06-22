@@ -12,6 +12,10 @@ import { IHotel } from '../../models/hotel';
 export class HotelCardComponent {
   @Input() hotel: IHotel;
 
+  get cardId(): string {
+    return `${this.hotel.address.countyCode}${this.hotel.distance}`;
+  }
+
   get distanceFromCenter(): string {
     return `${(this.hotel.distance / 1000).toFixed(1)} KM`;
   }

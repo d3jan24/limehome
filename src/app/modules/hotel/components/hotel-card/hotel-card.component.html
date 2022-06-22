@@ -1,4 +1,9 @@
-<article class="card" [class.selected]="isSelected" (click)="onCardClick()">
+<article
+  class="card"
+  [id]="cardId"
+  [class.selected]="isSelected"
+  (click)="onCardClick()"
+>
   <div class="content-wrapper">
     <div class="card-image">
       <img src="/assets/img/hotel.jpg" height="100" width="100" />

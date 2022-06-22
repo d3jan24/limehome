@@ -45,15 +45,25 @@ export class MapComponent implements OnDestroy, AfterViewInit {
     this.destroy$.complete();
   }
 
-  onMarkerClick(event: any): void {
-    const lat = event.latLng.lat();
-    const lng = event.latLng.lng();
+  onMarkerClick(marker: IMarker): void {
+    const lat = marker.lngLat.lat;
+    const lng = marker.lngLat.lng;
     const hotel = this.hotelService.hotels$.value.find((hotel: IHotel) => {
       return hotel.position.lat === lat && hotel.position.lng === lng;
     });
     if (hotel) {
       this.hotelService.selectHotel(hotel);
+      this.scrollToItem(marker.id);
     }
+  }
+
+  private scrollToItem(id: string): void {
+    const element = document.querySelector(`#${id}`);
+    element?.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'center',
+    });
   }
 
   private panToMarker(): void {

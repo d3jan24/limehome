@@ -4,7 +4,7 @@
       [options]="marker.markerOptions"
       *ngFor="let marker of markers$ | async"
       [position]="marker.lngLat"
-      (mapClick)="onMarkerClick($event)"
+      (mapClick)="onMarkerClick(marker)"
     ></map-marker>
   </google-map>
 </div>

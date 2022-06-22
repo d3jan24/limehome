@@ -1,8 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LngLat, LngLatLike } from 'mapbox-gl';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { IHotel } from '../../hotel/models/hotel';
 import { IMarker } from '../model/map';
 
@@ -11,15 +8,14 @@ import { IMarker } from '../model/map';
 })
 export class MapService {
   markers$: BehaviorSubject<IMarker[]> = new BehaviorSubject<IMarker[]>([]);
-  center: LngLatLike;
 
   constructor() {}
 
   mapMarkers(hotels: IHotel[]): void {
     const markers = hotels.map((hotel: IHotel) => {
       return {
-        id: hotel.distance.toString(),
-        lngLat: new LngLat(hotel.position.lng, hotel.position.lat),
+        id: `${hotel.address.countyCode}${hotel.distance}`,
+        lngLat: { lng: hotel.position.lng, lat: hotel.position.lat },
         markerOptions: {
           icon: './assets/icons/home-icon.svg',
         },
