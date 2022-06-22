@@ -1,32 +1,34 @@
-import { Injectable, OnDestroy } from "@angular/core";
-import { BehaviorSubject, Subject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
-import { MapService } from "../../map/services/map.service";
-import { IHotel } from "../models/hotel";
-import { HotelApiService } from "./http/hotel-api.service";
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { IMarker } from 'src/app/modules/map/model/map';
+import { MapService } from '../../map/services/map.service';
+import { IHotel } from '../models/hotel';
+import { HotelApiService } from './http/hotel-api.service';
 
-@Injectable()
-export class HotelService implements OnDestroy {
-  destroy$: Subject<void> = new Subject<void>();
+@Injectable({
+  providedIn: 'root',
+})
+export class HotelService {
   hotels$: BehaviorSubject<IHotel[]> = new BehaviorSubject<IHotel[]>([]);
+  selectedHotel$: BehaviorSubject<IHotel> = new BehaviorSubject<IHotel>(
+    {} as unknown as IHotel
+  );
 
   constructor(
     private hotelApiService: HotelApiService,
     private mapService: MapService
-  ) { }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
+  ) {}
 
   getHotels(): void {
-    this.hotelApiService.getHotels()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((hotels: IHotel[]) => {
-        this.hotels$.next(hotels);
-        this.mapService.mapMarkers(hotels);
-      });
+    this.hotelApiService.getHotels().subscribe((hotels: IHotel[]) => {
+      this.hotels$.next(hotels);
+      this.mapService.mapMarkers(hotels);
+    });
   }
-  
+
+  selectHotel(hotel: IHotel): void {
+    this.mapService.updateMarkerPin(hotel);
+    this.selectedHotel$.next(hotel);
+  }
 }

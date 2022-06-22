@@ -7,6 +7,12 @@
   justify-content: space-between;
   border-radius: 4px;
   box-shadow: 1px 0px 15px -3px #000000;
+  &:hover {
+    cursor: pointer;
+  }
+  &.selected {
+    background-color: beige;
+  }
 }
 .content-wrapper {
   padding: 10px 10px 0px 10px;

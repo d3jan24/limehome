@@ -1,4 +1,4 @@
-<article class="card" [id]="cardId">
+<article class="card" [class.selected]="isSelected" (click)="onCardClick()">
   <div class="content-wrapper">
     <div class="card-image">
       <img src="/assets/img/hotel.jpg" height="100" width="100" />
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="card-actions">
-    <button (click)="onBookClick()" class="btn-orange" type="button">
+    <button (click)="onBookClick($event)" class="btn-orange" type="button">
       Book
     </button>
   </div>
