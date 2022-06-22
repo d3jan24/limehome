@@ -7,14 +7,11 @@ import { HotelService } from '../../services/hotel.service';
   selector: 'lh-hotel-list',
   templateUrl: './hotel-list.component.html',
   styleUrls: ['./hotel-list.component.scss'],
-  providers: [HotelService]
 })
 export class HotelListComponent implements OnInit {
   hotels$: Observable<IHotel[]> = this.hotelService.hotels$;
 
-  constructor(
-    private hotelService: HotelService
-  ) { }
+  constructor(private hotelService: HotelService) {}
 
   ngOnInit(): void {
     this.hotelService.getHotels();

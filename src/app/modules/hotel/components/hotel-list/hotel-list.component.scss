@@ -1,15 +1,7 @@
 .hotel-container {
-  // grid-column: center-start / -1;
   display: grid;
   grid-auto-flow: column;
-  // gap: 20px;
-  // overflow: auto;
-  // padding-bottom: 1rem;
-  // padding: 8px;
-  // margin: 0 5px;
-  // border-radius: 4px;
-  // position: relative;
-  // width: 100%;
+  overflow-x: scroll;
 }
 
 .container {

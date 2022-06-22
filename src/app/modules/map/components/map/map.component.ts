@@ -1,31 +1,62 @@
-import { Component } from '@angular/core';
-import { LngLatBoundsLike, LngLatLike } from 'mapbox-gl';
-import { Observable } from 'rxjs';
-import { GERMANY_BOUNDS } from 'src/app/constants/map.constants';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { GoogleMap, MapMarker } from '@angular/google-maps';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { IHotel } from 'src/app/modules/hotel/models/hotel';
+import { HotelService } from 'src/app/modules/hotel/services/hotel.service';
 import { IMarker } from '../../model/map';
 import { MapService } from '../../services/map.service';
 
 @Component({
   selector: 'lh-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  styleUrls: ['./map.component.scss'],
 })
-export class MapComponent {
+export class MapComponent implements OnDestroy, AfterViewInit {
+  @ViewChild('map', { static: false }) map: GoogleMap;
   markers$: Observable<IMarker[]> = this.mapService.markers$;
-  bounds: LngLatBoundsLike = GERMANY_BOUNDS;
-  center: LngLatLike = this.mapService.center;
+  destroy$: Subject<void> = new Subject();
+  selectedHotel: IHotel;
 
   constructor(
-    private mapService: MapService
-  ) { }
+    private mapService: MapService,
+    private hotelService: HotelService
+  ) {
+    this.hotelService.selectedHotel$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((hotel: IHotel) => {
+        this.selectedHotel = hotel;
+        this.panToMarker();
+      });
+  }
 
-  onMarkerClick(marker: IMarker): void {
-    const allHotels = document.querySelectorAll('.current-hotel');
-    allHotels.forEach((hotel: Element) => hotel.classList.remove('current-hotel'));
-    const selected = document.querySelector(`#hotel${marker.id}`);
-    selected?.scrollIntoView({
-      behavior: 'smooth'
+  ngAfterViewInit(): void {
+    this.map.panTo({ lat: 48.137154, lng: 11.576124 });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  onMarkerClick(event: any): void {
+    const lat = event.latLng.lat();
+    const lng = event.latLng.lng();
+    const hotel = this.hotelService.hotels$.value.find((hotel: IHotel) => {
+      return hotel.position.lat === lat && hotel.position.lng === lng;
     });
-    selected?.classList.add('current-hotel');
+    if (hotel) {
+      this.hotelService.selectHotel(hotel);
+    }
+  }
+
+  private panToMarker(): void {
+    this.map?.panTo(this.selectedHotel.position);
   }
 }
