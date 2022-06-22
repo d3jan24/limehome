@@ -38,5 +38,18 @@ body {
   color: red;
 }
 
+.btn-orange {
+  color: white;
+  background-color: orange;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
 @import '~mapbox-gl/dist/mapbox-gl.css';
 @import '~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";

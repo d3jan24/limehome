@@ -1,11 +1,11 @@
 .navbar {
+  z-index: 2;
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 99;
-  padding: 10px 0;
-  background-color: #202733;
+  padding: 15px;
+  background-color: #ccd6c7;
   color: white;
   border-bottom: solid 3px white;
   h1 {

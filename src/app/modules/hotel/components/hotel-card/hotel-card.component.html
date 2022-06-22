@@ -1,4 +1,24 @@
-<article class="hotel-card" [id]="cardId">
-  <h4>{{ hotel.title }}</h4>
-  <span class="address">{{ hotel.address.label }}</span>
+<article class="card" [id]="cardId">
+  <div class="content-wrapper">
+    <div class="card-image">
+      <img src="/assets/img/hotel.jpg" height="100" width="100" />
+    </div>
+    <div class="card-content">
+      <div class="top">
+        <h4>{{ hotel.title }}</h4>
+        <span class="address">
+          {{ distanceFromCenter }} from the city center
+        </span>
+      </div>
+      <div class="bottom">
+        <span class="price">$98</span>
+        <span class="disclaimer">Designs may vary</span>
+      </div>
+    </div>
+  </div>
+  <div class="card-actions">
+    <button (click)="onBookClick()" class="btn-orange" type="button">
+      Book
+    </button>
+  </div>
 </article>

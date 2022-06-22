@@ -1,0 +1,33 @@
+.modal {
+  position: relative;
+  .booking-complete {
+    top: 1px;
+    position: absolute;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: green;
+    background-color: lightgreen;
+    border: solid 1px green;
+    border-radius: 4px;
+  }
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px;
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    &.error {
+      position: absolute;
+      left: 0;
+    }
+  }
+}

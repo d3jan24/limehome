@@ -1,0 +1,43 @@
+<div class="modal">
+  <div *ngIf="isBookingComplete" class="booking-complete">
+    Congrats on booking your hotel!
+  </div>
+  <div class="modal-header">
+    <h4>
+      <span>{{ hotelData.title }}</span>
+    </h4>
+    <button class="btn-orange" type="button" (click)="closeDialog()">
+      Close
+    </button>
+  </div>
+  <form [formGroup]="bookHotelForm" (ngSubmit)="onBookingConfirm()">
+    <div class="modal-input">
+      <label for="firstName">First Name</label>
+      <input
+        id="firstName"
+        formControlName="firstName"
+        placeholder="Enter your name"
+        type="text"
+      />
+    </div>
+    <div class="modal-input">
+      <label for="lastName">Last Name</label>
+      <input
+        id="lastName"
+        formControlName="lastName"
+        placeholder="Enter your last name"
+        type="text"
+      />
+    </div>
+    <div class="modal-input">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        type="email"
+      />
+    </div>
+    <button class="btn-orange" type="submit">Submit Booking</button>
+  </form>
+</div>
