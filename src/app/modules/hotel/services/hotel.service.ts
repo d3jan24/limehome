@@ -1,9 +1,7 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { IMarker } from 'src/app/modules/map/model/map';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { MapService } from '../../map/services/map.service';
-import { IHotel, IPosition } from '../models/hotel';
+import { IHotel } from '../models/hotel';
 import { HotelApiService } from './http/hotel-api.service';
 
 @Injectable({
@@ -24,6 +22,7 @@ export class HotelService {
     this.hotelApiService.getHotels().subscribe((hotels: IHotel[]) => {
       this.hotels$.next(hotels);
       this.mapService.mapMarkers(hotels);
+      this.selectedHotel$.next(hotels[0]);
     });
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { icon, icon_active } from 'src/app/constants/general.constants';
 import { IHotel } from '../../hotel/models/hotel';
 import { IMarker } from '../model/map';
 
@@ -9,15 +10,13 @@ import { IMarker } from '../model/map';
 export class MapService {
   markers$: BehaviorSubject<IMarker[]> = new BehaviorSubject<IMarker[]>([]);
 
-  constructor() {}
-
   mapMarkers(hotels: IHotel[]): void {
     const markers = hotels.map((hotel: IHotel) => {
       return {
-        id: `${hotel.address.countyCode}${hotel.distance}`,
+        id: hotel.id,
         lngLat: { lng: hotel.position.lng, lat: hotel.position.lat },
         markerOptions: {
-          icon: './assets/icons/home-icon.svg',
+          icon: icon,
         },
       };
     });
@@ -31,12 +30,12 @@ export class MapService {
         marker.lngLat.lng === hotel.position.lng
       ) {
         marker.markerOptions = {
-          icon: './assets/icons/home-icon-active.svg',
+          icon: icon_active,
         };
         return marker;
       }
       marker.markerOptions = {
-        icon: './assets/icons/home-icon.svg',
+        icon: icon,
       };
       return marker;
     });
