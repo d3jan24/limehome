@@ -11,7 +11,7 @@
     <div class="card-content">
       <div class="top">
         <h4>{{ hotel.title }}</h4>
-        <span class="address">
+        <span *ngIf="hotel.distance" class="address">
           {{ distanceFromCenter }} from the city center
         </span>
       </div>
