@@ -19,7 +19,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
     color: $success;
     background-color: $successLight;
     border: solid 1px $success;
@@ -34,14 +33,12 @@
 
   .modal-input {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
     margin: 10px 0;
 
     input {
       padding: 4px;
-      border: none;
-      border-bottom: solid 1px $gray;
     }
 
   }
