@@ -1,85 +1,68 @@
+
+@import "../../../../../assets/style/colors.scss";
+
 .card {
-  background-color: white;
-  margin: 0 4px;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: $white;
   border-radius: 4px;
+  min-height: 100%;
   box-shadow: 1px 0px 15px -3px #000000;
+
   &:hover {
     cursor: pointer;
   }
+
   &.selected {
-    background-color: beige;
+    background-color: $beige;
   }
-}
-.content-wrapper {
-  padding: 10px 10px 0px 10px;
-  min-width: 300px;
-  min-height: 150px;
-  display: flex;
-  flex-grow: 1;
-  .card-image {
-    flex: 0 0 45%;
-    max-width: 45%;
-    margin-right: 10px;
-    img {
-      object-fit: cover;
-      height: 100%;
+
+  .card-content-wrapper {
+    display: flex;
+    flex-grow: 1;
+    min-width: 300px;
+    min-height: 150px;
+
+    .card-image {
+      flex: 0 0 45%;
+      max-width: 45%;
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .card-content {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .top {
+        display: flex;
+        flex-direction: column;
+
+        h4 { word-break: break-all; }
+
+        .address { color: $gray; }
+      }
+
+      .bottom {
+        display: flex;
+        flex-direction: column;
+
+        .disclaimer {
+          color: $gray;
+        }
+      }
+    }
+  }
+
+  .card-actions {
+    button {
       width: 100%;
     }
-  }
-  .card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-    .top {
-      h4 {
-        margin-bottom: 0;
-        word-break: break-all;
-      }
-      display: flex;
-      flex-direction: column;
-      .address {
-        color: gray;
-        font-size: 15px;
-        font-weight: 500;
-        margin-top: 10px;
-      }
-    }
-    .bottom {
-      display: flex;
-      flex-direction: column;
-      .price {
-        font-weight: bold;
-        font-size: 25px;
-      }
-      .disclaimer {
-        color: gray;
-        font-size: 12px;
-      }
-    }
-  }
-  &.current-hotel {
-    background-color: #d2d5d9;
-    border: solid 1px black;
-  }
-  h4 {
-    margin-top: 0;
-  }
-}
-
-.card-actions {
-  padding: 10px;
-  button {
-    width: 100%;
-    color: white;
-    font-size: 14px;
-    font-weight: bolder;
-    padding: 10px 0;
-    background-color: #f7941d;
-    border: none;
   }
 }

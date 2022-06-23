@@ -1,0 +1,15 @@
+.btn {
+  font-size: 14px;
+  font-weight: bolder;
+  border: none;
+  border-radius: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &-orange {
+    background-color: $orange;
+    color: $white;
+  }
+}

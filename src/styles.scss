@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-html {
-  font-family: Helvetica, sans-serif;
-  font-size: 16px;
-}
+// html {
+//   font-family: Helvetica, sans-serif;
+//   font-size: 16px;
+// }
 
 body {
   margin: 0px;
@@ -38,15 +38,14 @@ body {
   color: red;
 }
 
-.btn-orange {
-  color: white;
-  background-color: #f7941d;
-  padding: 8px;
-  border: none;
-  border-radius: 4px;
-  &:hover {
-    cursor: pointer;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;0,900;1,300;1,400&display=swap');
+
+html, body {
+  font-family: 'Montserrat', sans-serif;
 }
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./assets/style/colors.scss";
+@import "./assets/style/theme.scss";
+@import "./assets/style/button.scss";
+@import "./assets/style/scrollbar.scss";

@@ -1,28 +1,28 @@
 <article
-  class="card"
+  class="card my-4"
   [id]="cardId"
   [class.selected]="isSelected"
   (click)="onCardClick()"
 >
-  <div class="content-wrapper">
-    <div class="card-image">
+  <div class="card-content-wrapper p-10 pb-0">
+    <div class="card-image mr-10">
       <img src="/assets/img/hotel.jpg" height="100" width="100" />
     </div>
     <div class="card-content">
       <div class="top">
-        <h4>{{ hotel.title }}</h4>
-        <span *ngIf="hotel.distance" class="address">
+        <h4 class="my-0 text-18 bold">{{ hotel.title }}</h4>
+        <span *ngIf="hotel.distance" class="address text-14 mt-10">
           {{ distanceFromCenter }} from the city center
         </span>
       </div>
       <div class="bottom">
-        <span class="price">$98</span>
-        <span class="disclaimer">Designs may vary</span>
+        <span class="price text-18 bold">$98</span>
+        <span class="disclaimer text-14">Designs may vary</span>
       </div>
     </div>
   </div>
-  <div class="card-actions">
-    <button (click)="onBookClick($event)" class="btn-orange" type="button">
+  <div class="card-actions py-10 mb-10">
+    <button type="button" (click)="onBookClick($event)" class="btn btn-orange px-10 text-16 bold">
       Book
     </button>
   </div>

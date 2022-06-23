@@ -1,6 +1,7 @@
-<div class="container">
+<div class="hotel-container-wrapper">
   <div class="hotel-container">
     <lh-hotel-card
+      class="mb-8"
       *ngFor="let hotel of hotels$ | async"
       [hotel]="hotel"
     ></lh-hotel-card>

@@ -1,43 +1,45 @@
-<div class="modal">
-  <div *ngIf="isBookingComplete" class="booking-complete">
+<div class="modal p-10">
+  <div *ngIf="isBookingComplete" class="booking-complete p-10">
     Congrats on booking your hotel!
   </div>
-  <div class="modal-header">
-    <h4>
+  <div class="modal-header mb-24">
+    <h4 class="text-18 bold mx-0">
       <span>{{ hotelData.title }}</span>
     </h4>
-    <button class="btn-orange" type="button" (click)="closeDialog()">
+    <button class="btn btn-orange p-10" type="button" (click)="closeDialog()">
       Close
     </button>
   </div>
   <form [formGroup]="bookHotelForm" (ngSubmit)="onBookingConfirm()">
-    <div class="modal-input">
-      <label for="firstName">First Name</label>
-      <input
-        id="firstName"
-        formControlName="firstName"
-        placeholder="Enter your name"
-        type="text"
-      />
+    <div class="mb-24">
+      <div class="modal-input">
+        <label class="text-14" for="firstName">First Name</label>
+        <input
+          id="firstName"
+          formControlName="firstName"
+          placeholder="Enter your name"
+          type="text"
+        />
+      </div>
+      <div class="modal-input">
+        <label class="text-14" for="lastName">Last Name</label>
+        <input
+          id="lastName"
+          formControlName="lastName"
+          placeholder="Enter your last name"
+          type="text"
+        />
+      </div>
+      <div class="modal-input">
+        <label class="text-14" for="email">Email</label>
+        <input
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          type="email"
+        />
+      </div>
     </div>
-    <div class="modal-input">
-      <label for="lastName">Last Name</label>
-      <input
-        id="lastName"
-        formControlName="lastName"
-        placeholder="Enter your last name"
-        type="text"
-      />
-    </div>
-    <div class="modal-input">
-      <label for="email">Email</label>
-      <input
-        id="email"
-        formControlName="email"
-        placeholder="Enter your email"
-        type="email"
-      />
-    </div>
-    <button class="btn-orange" type="submit">Submit Booking</button>
+    <button class="btn btn-orange p-10" type="submit">Submit Booking</button>
   </form>
 </div>

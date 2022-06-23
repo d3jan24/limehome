@@ -1,0 +1,102 @@
+// padding
+@mixin padding($size) {
+  padding: $size + px;
+}
+
+@mixin padding-bottom($size) {
+  padding-bottom: $size + px;
+}
+
+@mixin padding-top($size) {
+  padding-top: $size + px;
+}
+
+@mixin padding-right($size) {
+  padding-right: $size + px;
+}
+
+@mixin padding-left($size) {
+  padding-left: $size + px;
+}
+
+@mixin padding-x($size) {
+  padding: $size + px 0;
+}
+
+@mixin padding-y($size) {
+  padding: 0 $size + px;
+}
+
+@for $i from 0 through 24 {
+  .p-#{$i} { @include padding($i); }
+  .pb-#{$i} { @include padding-bottom($i); }
+  .pt-#{$i} { @include padding-top($i); }
+  .pr-#{$i} { @include padding-right($i); }
+  .pl-#{$i} { @include padding-left($i); }
+  .px-#{$i} { @include padding-x($i); }
+  .py-#{$i} { @include padding-y($i); }
+}
+
+// margins
+@mixin margin($size) {
+  margin: $size + px;
+}
+
+@mixin margin-bottom($size) {
+  margin-bottom: $size + px;
+}
+
+@mixin margin-top($size) {
+  margin-top: $size + px;
+}
+
+@mixin margin-right($size) {
+  margin-right: $size + px;
+}
+
+@mixin margin-left($size) {
+  margin-left: $size + px;
+}
+
+@mixin margin-x($size) {
+  margin: $size + px 0;
+}
+
+@mixin margin-y($size) {
+  margin: 0 $size + px;
+}
+
+@for $i from 0 through 24 {
+  .m-#{$i} { @include margin($i); }
+  .mb-#{$i} { @include margin-bottom($i); }
+  .mt-#{$i} { @include margin-top($i); }
+  .mr-#{$i} { @include margin-right($i); }
+  .ml-#{$i} { @include margin-left($i); }
+  .mx-#{$i} { @include margin-x($i); }
+  .my-#{$i} { @include margin-y($i); }
+}
+
+// font
+@mixin font-size($size) {
+  font-size: $size + px;
+}
+
+@for $i from 4 through 25 {
+  .text-#{$i} { @include font-size($i); }
+}
+
+.black {
+  font-weight: 900;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.thin {
+  font-weight: 300;
+}

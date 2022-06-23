@@ -39,7 +39,6 @@ export class HotelCardComponent {
     this.dialog.open(HotelBookingComponent, {
       disableClose: true,
       hasBackdrop: true,
-      height: '400px',
       width: '400px',
       data: {
         hotel: this.hotel,

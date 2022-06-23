@@ -1,20 +1,17 @@
+@import "../../../assets/style/colors.scss";
+
 .navbar {
   z-index: 2;
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  background-color: #ccd6c7;
-  color: white;
-  border-bottom: solid 3px white;
-  .container {
-    padding: 15px;
+  background-color: $lime;
+  color: $white;
+
+  .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  h1 {
-    margin: 0;
-    padding-left: 10px;
   }
 }
