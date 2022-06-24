@@ -47,18 +47,18 @@ export class MapComponent implements OnDestroy, AfterViewInit {
     });
     if (hotel) {
       this.hotelService.selectHotel(hotel);
-      this.scrollToItem(marker.id);
+      // this.scrollToItem(marker.id);
     }
   }
 
-  private scrollToItem(id: string): void {
-    const element = document.querySelector(`#${id}`);
-    element?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-      inline: 'center',
-    });
-  }
+  // private scrollToItem(id: string): void {
+  //   const element = document.querySelector(`#${id}`);
+  //   element?.scrollIntoView({
+  //     behavior: 'smooth',
+  //     block: 'center',
+  //     inline: 'center',
+  //   });
+  // }
 
   private panToMarker(): void {
     this.map?.panTo(this.selectedHotel.position);

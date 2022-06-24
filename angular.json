@@ -94,7 +94,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node-modules/swiper/scss",
+              "./node-modules/swiper/scss/navigation",
+              "./node-modules/swiper/scss/pagination"
             ],
             "scripts": []
           }
