@@ -18,15 +18,15 @@ export class HotelBookingComponent implements OnInit {
   isBookingComplete: boolean = false;
 
   get firstName(): FormControl {
-    return this.bookHotelForm.get('firstName') as FormControl;
+    return this.bookHotelForm.controls.firstName as FormControl;
   }
 
   get lastName(): FormControl {
-    return this.bookHotelForm.get('lastName') as FormControl;
+    return this.bookHotelForm.controls.lastName as FormControl;
   }
 
   get email(): FormControl {
-    return this.bookHotelForm.get('email') as FormControl;
+    return this.bookHotelForm.controls.email as FormControl;
   }
 
   get hotelData(): IHotel {

@@ -1,8 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy, ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { GoogleMap } from '@angular/google-maps';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -18,7 +14,7 @@ import { MapService } from '../../services/map.service';
 })
 export class MapComponent implements OnDestroy, AfterViewInit {
   @ViewChild('map', { static: false }) map: GoogleMap;
-  markers$: Observable<IMarker[]> = this.mapService.markers$;
+  readonly markers$: Observable<IMarker[]> = this.mapService.markers$;
   destroy$: Subject<void> = new Subject();
   selectedHotel: IHotel;
 
@@ -30,7 +26,6 @@ export class MapComponent implements OnDestroy, AfterViewInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((hotel: IHotel) => {
         this.selectedHotel = hotel;
-        this.mapService.updateMarkerPin(hotel);
         this.panToMarker();
       });
   }
@@ -61,7 +56,7 @@ export class MapComponent implements OnDestroy, AfterViewInit {
     element?.scrollIntoView({
       behavior: 'smooth',
       block: 'center',
-      inline: 'center'
+      inline: 'center',
     });
   }
 

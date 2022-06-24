@@ -40,6 +40,12 @@
         />
       </div>
     </div>
-    <button class="btn btn-orange p-10" type="submit">Submit Booking</button>
+    <button
+      [disabled]="!bookHotelForm.valid || isBookingComplete"
+      class="btn btn-orange p-10"
+      type="submit"
+    >
+      Submit Booking
+    </button>
   </form>
 </div>

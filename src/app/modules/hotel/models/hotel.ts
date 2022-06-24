@@ -1,3 +1,4 @@
+export type CollectionDto<T> = { items: T[] };
 export interface IHotel {
   id: string;
   title: string;

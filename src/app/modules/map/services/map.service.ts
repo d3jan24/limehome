@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest } from 'rxjs';
 import { icon, icon_active } from 'src/app/constants/general.constants';
+import { HotelService } from 'src/app/modules/hotel/services/hotel.service';
 import { IHotel } from '../../hotel/models/hotel';
 import { IMarker } from '../model/map';
 
@@ -10,34 +11,24 @@ import { IMarker } from '../model/map';
 export class MapService {
   markers$: BehaviorSubject<IMarker[]> = new BehaviorSubject<IMarker[]>([]);
 
-  mapMarkers(hotels: IHotel[]): void {
+  constructor(private hotelService: HotelService) {
+    combineLatest([
+      this.hotelService.hotels$,
+      this.hotelService.selectedHotel$,
+    ]).subscribe(([hotels, selectedHotel]) => {
+      this.mapMarkers(hotels, selectedHotel);
+    });
+  }
+
+  private mapMarkers(hotels: IHotel[], selectedHotel: IHotel): void {
     const markers = hotels.map((hotel: IHotel) => {
       return {
         id: hotel.id,
-        lngLat: { lng: hotel.position.lng, lat: hotel.position.lat },
+        lngLat: hotel.position,
         markerOptions: {
-          icon: icon,
+          icon: hotel.id === selectedHotel.id ? icon_active : icon,
         },
       };
-    });
-    this.markers$.next(markers);
-  }
-
-  updateMarkerPin(hotel: IHotel): void {
-    const markers = this.markers$.value.map((marker: IMarker) => {
-      if (
-        marker.lngLat.lat === hotel.position.lat &&
-        marker.lngLat.lng === hotel.position.lng
-      ) {
-        marker.markerOptions = {
-          icon: icon_active,
-        };
-        return marker;
-      }
-      marker.markerOptions = {
-        icon: icon,
-      };
-      return marker;
     });
     this.markers$.next(markers);
   }

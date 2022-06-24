@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { IHotel } from '../../models/hotel';
+import { CollectionDto, IHotel } from '../../models/hotel';
 
 @Injectable()
 export class HotelApiService {
@@ -12,22 +12,23 @@ export class HotelApiService {
   constructor(private http: HttpClient) {}
 
   getHotels(): Observable<IHotel[]> {
-    return this.http
-      .get<any>(this.apiUrl)
-      .pipe(map((response: any) => [
-        ...response.items.map((item: any) => {
-          return this.mapHotelWithId(item);
+    return this.http.get<CollectionDto<IHotel>>(this.apiUrl).pipe(
+      map((response: CollectionDto<IHotel>) =>
+        response.items.map((item: IHotel) => {
+          const id = response.items.indexOf(item);
+          return this.mapHotelWithId(id, item);
         })
-      ]));
+      )
+    );
   }
 
-  private mapHotelWithId(data: any): IHotel {
+  private mapHotelWithId(id: number, data: IHotel): IHotel {
     return {
-      id: `${data.address.countyCode}${data.distance}`,
+      id: `id${id}`,
       title: data.title,
       address: data.address,
       position: data.position,
-      distance: data.distance
+      distance: data.distance,
     };
   }
 }

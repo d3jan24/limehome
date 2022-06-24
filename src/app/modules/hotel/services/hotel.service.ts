@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { MapService } from '../../map/services/map.service';
 import { IHotel } from '../models/hotel';
 import { HotelApiService } from './http/hotel-api.service';
 
@@ -13,21 +12,16 @@ export class HotelService {
     {} as unknown as IHotel
   );
 
-  constructor(
-    private hotelApiService: HotelApiService,
-    private mapService: MapService
-  ) {}
+  constructor(private hotelApiService: HotelApiService) {}
 
   getHotels(): void {
     this.hotelApiService.getHotels().subscribe((hotels: IHotel[]) => {
       this.hotels$.next(hotels);
-      this.mapService.mapMarkers(hotels);
       this.selectedHotel$.next(hotels[0]);
     });
   }
 
   selectHotel(hotel: IHotel): void {
-    this.mapService.updateMarkerPin(hotel);
     this.selectedHotel$.next(hotel);
   }
 }
