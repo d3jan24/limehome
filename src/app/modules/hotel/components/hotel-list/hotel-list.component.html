@@ -1,8 +1,7 @@
 <div class="slider-wrapper">
-  <swiper #swiper class="my-swiper" [config]="swiperConfig">
-    <ng-template swiperSlide>
+  <swiper #swiper [config]="swiperConfig" (slideChangeTransitionEnd)="onSlideChange($event)">
+    <ng-template swiperSlide *ngFor="let hotel of hotels$ | async">
       <lh-hotel-card
-        *ngFor="let hotel of hotels$ | async"
         class="mb-8"
         [id]="hotel.id"
         [hotel]="hotel"

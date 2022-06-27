@@ -14,6 +14,10 @@ export class HotelService {
 
   constructor(private hotelApiService: HotelApiService) {}
 
+  getHotelById(id: string): IHotel | undefined {
+    return this.hotels$.value.find((hotel: IHotel) => hotel.id === id);
+  }
+
   getHotels(): void {
     this.hotelApiService.getHotels().subscribe((hotels: IHotel[]) => {
       this.hotels$.next(hotels);
