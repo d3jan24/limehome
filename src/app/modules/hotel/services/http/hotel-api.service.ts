@@ -24,7 +24,7 @@ export class HotelApiService {
 
   private mapHotelWithId(id: number, data: IHotel): IHotel {
     return {
-      id: `id${id}`,
+      id: `${id}`,
       title: data.title,
       address: data.address,
       position: data.position,

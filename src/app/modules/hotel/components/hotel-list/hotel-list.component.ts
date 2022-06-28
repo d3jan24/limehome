@@ -33,25 +33,28 @@ export class HotelListComponent implements OnInit, OnDestroy {
     this.hotelService.selectedHotel$
       .pipe(takeUntil(this.destroy$))
       .subscribe((hotel: IHotel) => {
-        this.selectedHotel = hotel;
         this.swipeToSelected(hotel);
       });
   }
 
   onSlideChange(event: any): void {
     const currentSlide: Element = event.slides[event.realIndex];
+    if (!currentSlide) { return; }
     const id =  currentSlide.children[0].getAttribute('id');
-    if (this.selectedHotel?.id === id) { return; }
-    if (!id) { return; }
+    if (!id || this.selectedHotel?.id === id) { return; }
     const hotel = this.hotelService.getHotelById(id);
     if (!hotel) { return; }
+    this.selectedHotel = hotel;
     this.hotelService.selectHotel(hotel);
   }
 
   private swipeToSelected(hotel: IHotel): void {
-    const index = hotel.id?.split('').pop();
+    const index = hotel.id;
     if (!index) { return; }
-    this.swiper?.swiperRef.slideTo(+index, 1000, false);
+    if (this.selectedHotel !== hotel) {
+      this.swiper?.swiperRef.slideToLoop(+index, 1000, false);
+      this.selectedHotel = hotel;
+    }
   }
 
 }
