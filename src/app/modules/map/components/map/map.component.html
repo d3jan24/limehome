@@ -1,8 +1,8 @@
-<div>
+<div class="goolge-map-wrapper">
   <google-map #map class="map" height="100vh" width="100vw">
     <map-marker
+      *ngFor="let marker of markers"
       [options]="marker.markerOptions"
-      *ngFor="let marker of markers$ | async"
       [position]="marker.lngLat"
       (mapClick)="onMarkerClick(marker)"
     ></map-marker>

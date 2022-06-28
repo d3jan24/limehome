@@ -7,6 +7,7 @@ import { HotelCardComponent } from './components/hotel-card/hotel-card.component
 import { HotelListComponent } from './components/hotel-list/hotel-list.component';
 import { HotelApiService } from './services/http/hotel-api.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [HotelListComponent, HotelCardComponent, HotelBookingComponent],
@@ -15,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    SwiperModule,
   ],
   exports: [HotelListComponent],
   providers: [HotelApiService],

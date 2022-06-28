@@ -2,12 +2,12 @@
 @import "../../../../../assets/style/colors.scss";
 
 .card {
+  width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: $white;
   min-height: 100%;
-  max-width: 90vw;
   box-shadow: 1px 0px 15px -3px #000000;
 
   &:hover {
@@ -21,16 +21,16 @@
   .card-content-wrapper {
     display: flex;
     flex-grow: 1;
-    min-width: 300px;
     min-height: 150px;
 
     .card-image {
+      display: flex;
       flex: 0 0 45%;
       max-width: 45%;
       img {
+        flex-grow: 1;
         object-fit: cover;
         height: 100%;
-        width: 100%;
       }
     }
 
